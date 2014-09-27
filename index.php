@@ -36,36 +36,32 @@
 			function updatePage() {
 				feed.run();
 				//Get json for agenda
-				$.getJSON("json/getAgenda.php",
-          			function(data){
-          				$("#agendaContainer").empty();
-          				for (var i = 0; i < data.agendas.length; i++) {
-          					if(data.agendas[i].isHappening=="1")
-          					{
-          						$("#agendaContainer").append('<div class="happeningAgenda">' + '<h3>' + data.agendas[i].datetime + '</h3><h1><b>' + data.agendas[i].name + '</b></h1><h4>' + data.agendas[i].description + '</h4></div>');
-          					}
-          					else
-          					{
-          						$("#agendaContainer").append('<div class="pendingAgenda">' + '<h3>' + data.agendas[i].datetime + '</h3><h1><b>' + data.agendas[i].name + '</b></h1><h4>' + data.agendas[i].description + '</h4></div>');
-          					}
+				$.getJSON("api/json/getAgenda.php", function(data) {
+					$("#agendaContainer").empty();
+					
+					for (var i = 0; i < data.agendaList.length; i++) {
+						if (data.agendaList.isHappening) {
+							$("#agendaContainer").append('<div class="happeningAgenda">' + '<h3>' + data.agendaList[i].start + '</h3><h1><b>' + data.agendaList[i].name + '</b></h1><h4>' + data.agendaList[i].description + '</h4></div>');
+						} else {
+							$("#agendaContainer").append('<div class="pendingAgenda">' + '<h3>' + data.agendaList[i].start + '</h3><h1><b>' + data.agendaList[i].name + '</b></h1><h4>' + data.agendaList[i].description + '</h4></div>');
 						}
+					}
               	});
+				
               	//Get JSON for slides
-              	$.getJSON("json/getSlide.php",
-          			function(data){
-          				contentsArray = new Array();
-          				contentsTwoArray = new Array();
-          				for (var i = 0; i < data.slides.length; i++) {
-          					if(i%2==0)
-          					{
-          						contentsArray.push("<h1>" + data.slides[i].title + "</h1>" + data.slides[i].content);
-          					}
-          					else
-          					{
-          						contentsTwoArray.push("<h1>" + data.slides[i].title + "</h1>" + data.slides[i].content);
-          					}
+              	$.getJSON("api/json/getSlide.php", function(data) {
+					contentsArray = new Array();
+					contentsTwoArray = new Array();
+					
+					for (var i = 0; i < data.slides.length; i++) {
+						if(i%2 == 0) {
+							contentsArray.push("<h1>" + data.slides[i].title + "</h1>" + data.slides[i].content);
+						} else {
+							contentsTwoArray.push("<h1>" + data.slides[i].title + "</h1>" + data.slides[i].content);
 						}
+					}
               	});
+				
               	//Load footer
               	$("#footerContainer").load("footer.php");
 			}
@@ -137,9 +133,6 @@
 		<!-- Right -->
 		<section id="colFoot"> <!-- footerboksen for meny, sponsorlogoer og butikktekst -->
 			<img src="images/infected_logo_hvit_medium.png" alt="Infected" height="70%;" style="margin-top:1%;">
-			<div id="footerContainer">
-				<i>Laster data...</i>
-			</div>
 		</section>
 	</div>
 </body>
