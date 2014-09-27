@@ -151,7 +151,7 @@ h1.#colRight {
 	text-align: left;
 	position: absolute;
 	/* width: auto; */
-	bottom: 20px;
-	right: 20px;
+	bottom: 0px;
+	right: 4px;
 	z-index: 2;
 }
