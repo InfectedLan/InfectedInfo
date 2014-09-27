@@ -109,6 +109,7 @@ h1.#colRight {
 	width: 52.2%;
 	height: 22%;
 	float: left;
+	position: relative;
 }
 
 .agendaContainer {
@@ -148,7 +149,9 @@ h1.#colRight {
 #footerContainer {
 	float: right;
 	text-align: left;
-	width: auto;
-	margin-top: 50px;
+	position: absolute;
+	/* width: auto; */
+	bottom: 20px;
+	right: 20px;
 	z-index: 2;
 }

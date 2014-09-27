@@ -25,6 +25,7 @@
 			var contentsTwoArray = new Array();
 			var slideAt = 0;
 			var slideTwoAt = 0;
+			var updateCount = 0;
 			var nextImage = "";
 			var imageArray = new Array("BF01", "BF02", "BF03", "BF04", "cod01", "cod02", "cod03", "cod04", "ghost_recon01", "MOH01", "sniper01");
 			function preloadImage (url) {
@@ -34,7 +35,15 @@
 		        } catch (e) { }
 		    }
 			function updatePage() {
-				feed.run();
+				updateCount++;
+				if(updateCount==10) {
+					location.reload();
+				}
+				//alert("update");
+              	//Load footer
+              	$("#footerContainer").load("footer.php");
+
+				//feed.run();
 				//Get json for agenda
 				$.getJSON("api/json/getAgenda.php", function(data) {
 					$("#agendaContainer").empty();
@@ -61,9 +70,6 @@
 						}
 					}
               	});
-				
-              	//Load footer
-              	$("#footerContainer").load("footer.php");
 			}
 			function prepareNextImage() {
 				var r = Math.floor((Math.random()*(imageArray.length-1))+1);
@@ -104,14 +110,16 @@
 					updatePage();
 				}
 			}
-			setInterval(function(){
-				updateSlide();
-			},1000*15);
-			setInterval(function(){
-				updateImage();
-			},1000*5*60);
-			prepareNextImage();
-			updatePage();
+			$(document).ready(function() {
+				setInterval(function(){
+					updateSlide();
+				},1000*15);
+				setInterval(function(){
+					updateImage();
+				},1000*5*60);
+				prepareNextImage();
+				updatePage();
+			});
 		</script>
 		<section id="colRight"> <!-- Skejmamenyen til høyre -->
 			<div id="agendaPadding">
@@ -132,7 +140,8 @@
 		</section>
 		<!-- Right -->
 		<section id="colFoot"> <!-- footerboksen for meny, sponsorlogoer og butikktekst -->
-			<img src="images/infected_logo_hvit_medium.png" alt="Infected" height="70%;" style="margin-top:1%;">
+			<img src="images/infected_logo_hvit_medium.png" alt="Infected" height="50%;" style="margin-top:1%;">
+			<div id="footerContainer"></div>
 		</section>
 	</div>
 </body>
