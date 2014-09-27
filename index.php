@@ -25,7 +25,6 @@
 			var contentsTwoArray = new Array();
 			var slideAt = 0;
 			var slideTwoAt = 0;
-			var updateCount = 0;
 			var nextImage = "";
 			var imageArray = new Array("BF01", "BF02", "BF03", "BF04", "cod01", "cod02", "cod03", "cod04", "ghost_recon01", "MOH01", "sniper01");
 			function preloadImage (url) {
@@ -35,10 +34,6 @@
 		        } catch (e) { }
 		    }
 			function updatePage() {
-				updateCount++;
-				if(updateCount==10) {
-					location.reload();
-				}
 				//alert("update");
               	//Load footer
               	$("#footerContainer").load("footer.php");
@@ -46,7 +41,7 @@
 				//feed.run();
 				//Get json for agenda
 				$.getJSON("api/json/getAgenda.php", function(data) {
-					$("#agendaContainer").empty();
+				//	$("#agendaContainer").empty();
 					
 					for (var i = 0; i < data.agendaList.length; i++) {
 						if (data.agendaList.isHappening) {

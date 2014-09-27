@@ -1,1 +1,1 @@
-<img src="images/meny_logo.svg" /><h1>Åpningstider for meny: 09:00 - 18:00</h1>
+<center><img src="images/meny_logo.svg" width="200"/></center><h1>Åpningstider: 09:00 - 18:00</h1>
