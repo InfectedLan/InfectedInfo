@@ -1,7 +1,7 @@
 <!DOCUMENT html>
 <html>
 <head>
-	<title>Infected Infoscreen</title>
+	<title>Infected Screen</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="instafeed.min.js"></script>
 	<script type="text/javascript" src="jquery.js"></script>
@@ -38,7 +38,7 @@
               	$("#footerContainer").load("footer.php");
 
 				// Get json for agenda
-				$.getJSON("api/json/agenda/getAgenda.php", function(data) {
+				$.getJSON('api/json/agenda/getPublishedAgendas.php', function(data) {
 					for (var i = 0; i < data.agendaList.length; i++) {
 						if (data.agendaList.isHappening) {
 							$("#agendaContainer").append('<div class="happeningAgenda">' + '<h3>' + data.agendaList[i].start + '</h3><h1><b>' + data.agendaList[i].name + '</b></h1><h4>' + data.agendaList[i].description + '</h4></div>');
@@ -49,7 +49,7 @@
               	});
 				
               	// Get JSON for slides
-              	$.getJSON("api/json/slide/getSlide.php", function(data) {
+              	$.getJSON("api/json/slide/getSlides.php", function(data) {
 					contentsArray = new Array();
 					contentsTwoArray = new Array();
 					
