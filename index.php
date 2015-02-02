@@ -1,11 +1,19 @@
+<?php
+require_once 'settings.php';
+?>
+
 <!DOCUMENT html>
 <html>
 <head>
 	<title>Infected Screen</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src="instafeed.min.js"></script>
-	<script type="text/javascript" src="jquery.js"></script>
+	<meta name="description" content="<?php echo Settings::description; ?>">';
+	<meta name="keywords" content="<?php echo Settings::keywords; ?>">';
+	<meta name="author" content="halvors and petterroea">';
 	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<script src="../api/scripts/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="scripts/instafeed.min.js"></script>
+	
 </head>
 <body>
 	<div id="container">
@@ -27,12 +35,14 @@
 			var slideTwoAt = 0;
 			var nextImage = "";
 			var imageArray = new Array("BF01", "BF02", "BF03", "BF04", "cod01", "cod02", "cod03", "cod04", "ghost_recon01", "MOH01", "sniper01");
+			
 			function preloadImage (url) {
 		        try {
 		            var _img = new Image();
 		            _img.src = url;
 		        } catch (e) { }
 		    }
+			
 			function updatePage() {
               	// Load footer
               	$("#footerContainer").load("footer.php");
@@ -54,7 +64,7 @@
 					contentsTwoArray = new Array();
 					
 					for (var i = 0; i < data.slides.length; i++) {
-						if(i%2 == 0) {
+						if (i%2 == 0) {
 							contentsArray.push("<h1>" + data.slides[i].title + "</h1>" + data.slides[i].content);
 						} else {
 							contentsTwoArray.push("<h1>" + data.slides[i].title + "</h1>" + data.slides[i].content);
@@ -62,52 +72,62 @@
 					}
               	});
 			}
+			
 			function prepareNextImage() {
-				var r = Math.floor((Math.random()*(imageArray.length-1))+1);
+				var r = Math.floor((Math.random()*(imageArray.length - 1)) + 1);
               	nextImage = "../images/backgrounds/"+ imageArray[r] +".jpg";
               	preloadImage(nextImage);
 			}
+			
 			function updateImage() {
 				//Change background
               	$("html").css('background-image', 'url('+ nextImage +')');
 	            prepareNextImage();
 			}
+			
 			function updateSlide() {
 				$("#slideContainer").fadeOut('slow', function(){
 					$("#slideContainer").empty();
 		            $("#slideContainer").append(contentsArray[slideAt]);
 					$("#slideContainer").fadeIn('slow');
-		        });  
+		        });
+				
 		        $("#slideContainerTwo").fadeOut('slow', function(){
 					$("#slideContainerTwo").empty();
 		            $("#slideContainerTwo").append(contentsTwoArray[slideTwoAt]);
 					$("#slideContainerTwo").fadeIn('slow');
-		        });  
+		        });
+				
 		        var shouldUpdate = false;
 				slideAt++;
-				if(slideAt==contentsArray.length)
-				{
+				
+				if (slideAt == contentsArray.length) {
 					shouldUpdate = true;
 					slideAt=0;
 				}
+				
 				slideTwoAt++;
-				if(slideTwoAt==contentsTwoArray.length)
-				{
+				
+				if (slideTwoAt == contentsTwoArray.length) {
 					shouldUpdate = true;
 					slideTwoAt=0;
 				}
-				if(shouldUpdate)
-				{
+				
+				if (shouldUpdate) {
 					updatePage();
 				}
 			}
+			
 			$(document).ready(function() {
 				setInterval(function(){
 					updateSlide();
-				},1000*15);
+				}, 1000*15);
+				}, 1000*15);
+				
 				setInterval(function(){
 					updateImage();
-				},1000*5*60);
+				}, 1000*5*60);
+				
 				prepareNextImage();
 				updatePage();
 			});
