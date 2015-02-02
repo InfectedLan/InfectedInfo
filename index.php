@@ -49,7 +49,7 @@
               	});
 				
               	// Get JSON for slides
-              	$.getJSON("api/json/slide/getSlides.php", function(data) {
+              	$.getJSON("api/json/slide/getPublishedSlides.php", function(data) {
 					contentsArray = new Array();
 					contentsTwoArray = new Array();
 					
