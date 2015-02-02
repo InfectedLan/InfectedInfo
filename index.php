@@ -38,7 +38,7 @@
               	$("#footerContainer").load("footer.php");
 
 				// Get json for agenda
-				$.getJSON('api/json/agenda/getPublishedAgendas.php', function(data) {
+				$.getJSON('api/json/agenda/getPublishedNotHappendAgendas.php', function(data) {
 					for (var i = 0; i < data.agendaList.length; i++) {
 						if (data.agendaList.isHappening) {
 							$("#agendaContainer").append('<div class="happeningAgenda">' + '<h3>' + data.agendaList[i].start + '</h3><h1><b>' + data.agendaList[i].name + '</b></h1><h4>' + data.agendaList[i].description + '</h4></div>');
