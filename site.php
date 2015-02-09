@@ -43,7 +43,7 @@ class Site {
 						var imageArray = new Array("BF01", "BF02", "BF03", "BF04", "cod01", "cod02", "cod03", "cod04", "ghost_recon01", "MOH01", "sniper01");
 						
 						$(document).ready(function() {
-							setInterval(function(){
+							setInterval(function() {
 								updateSlide();
 							}, 1000*15);
 							
