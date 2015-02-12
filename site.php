@@ -12,9 +12,9 @@ class Site {
 		<html>
 			<head>
 				<title>Infected Screen</title>
-				<meta name="description" content="<?php echo Settings::description; ?>">';
-				<meta name="keywords" content="<?php echo Settings::keywords; ?>">';
-				<meta name="author" content="halvors and petterroea">';
+				<meta name="description" content="<?php echo Settings::description; ?>">
+				<meta name="keywords" content="<?php echo Settings::keywords; ?>">
+				<meta name="author" content="halvors and petterroea">
 				<meta charset="UTF-8">
 				<link rel="stylesheet" type="text/css" href="styles/style.css">
 				<script src="../api/scripts/jquery-1.11.1.min.js"></script>
