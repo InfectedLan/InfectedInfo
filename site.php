@@ -8,12 +8,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 3.0 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -22,9 +22,9 @@ require_once 'settings.php';
 
 class Site {
 	public function __construct() {
-		
+
 	}
-	
+
 	// Execute the site.
 	public function execute() {
 		?>
@@ -37,7 +37,6 @@ class Site {
 				<meta charset="UTF-8">
 				<link rel="stylesheet" type="text/css" href="styles/style.css">
 				<script src="../api/scripts/jquery-1.11.1.min.js"></script>
-				<script src="scripts/instafeed.min.js"></script>
 				<script src="scripts/infoscreen.js"></script>
 			</head>
 			<body>

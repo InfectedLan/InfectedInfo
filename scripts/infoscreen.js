@@ -7,12 +7,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 3.0 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -27,11 +27,11 @@ $(document).ready(function() {
 	setInterval(function() {
 		updateSlides();
 	}, 1000*15);
-	
+
 	setInterval(function() {
 		updateImage();
 	}, 1000*5*60);
-	
+
 	prepareNextImage(); //Preload next image
 	updateImage();
 	loadPage();
@@ -40,19 +40,19 @@ $(document).ready(function() {
 function loadPage() {
 	slideAt = 0;
 	// Get json for agenda
-	$.getJSON('api/json/agenda/getPublishedNotHappendAgendas.php', function(data) {	
+	$.getJSON('api/json/agenda/getPublishedNotHappendAgendas.php', function(data) {
 		if (data.agendaList.length >= 1) {
 			$("#agendaContainer").empty();
 			$.each(data.agendaList, function(index, agenda) {
 				if (agenda.isHappening) {
-					$('#agendaContainer').append('<div class="happeningAgenda">' + 
-						'<h3>' + agenda.startTime + '</h3>' + 
+					$('#agendaContainer').append('<div class="happeningAgenda">' +
+						'<h3>' + agenda.startTime + '</h3>' +
 						'<h1><b>' + agenda.title + '</b></h1>' +
 						'<h4>' + agenda.description + '</h4>' +
 					'</div>');
 				} else {
-					$('#agendaContainer').append('<div class="pendingAgenda">' + 
-						'<h3>' + agenda.startTime + '</h3>' + 
+					$('#agendaContainer').append('<div class="pendingAgenda">' +
+						'<h3>' + agenda.startTime + '</h3>' +
 						'<h1><b>' + agenda.title + '</b></h1>' +
 						'<h4>' + agenda.description + '</h4>' +
 					'</div>');
@@ -60,7 +60,7 @@ function loadPage() {
 			});
 		}
 	});
-	
+
 	// Get JSON for slides
 	$.getJSON('api/json/slide/getPublishedSlides.php', function(data) {
 		$.each(data.slides, function(index, slide) {
@@ -76,7 +76,7 @@ function preloadImage (url) {
 		var _img = new Image();
 		_img.src = url;
 	} catch (e) {
-		
+
 	}
 }
 
@@ -92,9 +92,9 @@ function updateImage() {
 	prepareNextImage();
 }
 
-function updateSlides() {	
+function updateSlides() {
 	var shouldUpdate = false;
-	
+
 	//Fix for less repetition
 	if(contentsArray.length % 2 == 0) { //Is it an even number?
 		if(slideAt == ( contentsArray.length *2) - 2) {
@@ -105,9 +105,9 @@ function updateSlides() {
 			shouldUpdate = true;
 		}
 	}
-	
+
 	if (shouldUpdate) {
-		$.getJSON('version.txt', function(data) {	
+		$.getJSON('version.txt', function(data) {
 			if(data.version != version_id) {
 				location.reload();
 			} else {
@@ -120,7 +120,7 @@ function updateSlides() {
 			$("#slideContainer").append(contentsArray[(slideAt)%contentsArray.length]);
 			$("#slideContainer").fadeIn('slow');
 		});
-		
+
 		$("#slideContainerTwo").fadeOut('slow', function(){
 			$("#slideContainerTwo").empty();
 			$("#slideContainerTwo").append(contentsArray[(slideAt+1)%contentsArray.length]);
