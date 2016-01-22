@@ -36,7 +36,7 @@ class Site {
 				<meta name="author" content="halvors and petterroea">
 				<meta charset="UTF-8">
 				<link rel="stylesheet" type="text/css" href="styles/style.css">
-				<script src="../api/scripts/jquery-1.11.1.min.js"></script>
+				<script src="../api/scripts/jquery-1.11.3.min.js"></script>
 				<script src="scripts/infoscreen.js"></script>
 			</head>
 			<body>
