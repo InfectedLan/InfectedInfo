@@ -63,7 +63,7 @@ function loadPage() {
 
 	// Get JSON for slides
 	$.getJSON('api/json/slide/getPublishedSlides.php', function(data) {
-		$.each(data.slides, function(index, slide) {
+		$.each(data.slideList, function(index, slide) {
 			contentsArray.push('<h1>' + slide.title + "</h1>" + slide.content);
 		});
 	});
